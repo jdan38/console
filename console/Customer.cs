@@ -20,9 +20,11 @@ namespace console
         // Generates customer number
         public int cusnum()
         {
-            Random random = new Random();
+            Random rnd = new Random();
+            int cus = rnd.Next(100, 130000);
+            //Random random = new Convert.ToInt32(Random());
             //customernumber = random.Next();
-            return 0;
+            return cus;
         }
 
         public Customer(string aFname, string aLname, string aphone,  string aBaddress , string aSaddress, string aemail, int abalance)
