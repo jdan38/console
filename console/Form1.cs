@@ -32,10 +32,7 @@ namespace console
 
         }
 
-        private void billingALabel_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void firstNameTextBox_TextChanged(object sender, EventArgs e)
         {

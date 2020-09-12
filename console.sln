@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console", "console\console.csproj", "{5452E0C6-EA9F-4130-98CC-97F6F0F0EAF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.AspNetCore", "Warehouse.AspNetCore\Warehouse.AspNetCore.csproj", "{1F367336-D2E0-48A1-A000-458E19B63A45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5452E0C6-EA9F-4130-98CC-97F6F0F0EAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5452E0C6-EA9F-4130-98CC-97F6F0F0EAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5452E0C6-EA9F-4130-98CC-97F6F0F0EAF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F367336-D2E0-48A1-A000-458E19B63A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F367336-D2E0-48A1-A000-458E19B63A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F367336-D2E0-48A1-A000-458E19B63A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F367336-D2E0-48A1-A000-458E19B63A45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

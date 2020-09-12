@@ -8,24 +8,35 @@ namespace console
 {
     class Item
     {
-        public string iname;
-        public string itype;
-        public int weight;
-        public string unit;
-        public string description;
-        public int price;
-        public int qty;
+        private string name;
+        private string type;
+        private int weight;
+        private string unit;
+        private string description;
+        private int price;
+        private int qty;
 
-        public Item(string aname, string atype, int aweight, string aunit, string adescription, int aprice, int aqty)
+
+
+
+        public string Name { get => name; set => name = value; }
+        public string Type { get => type; set => type = value; }
+        public int Weight { get => weight; set => weight = value; }
+        public string Unit { get => unit; set => unit = value; }
+        public string Description { get => description; set => description = value; }
+        public int Price { get => price; set => price = value; }
+        public int Qty { get => qty; set => qty = value; }
+
+
+        public Item(string name, string type, int weight, string unit, string description, int price, int qty)
         {
-            iname = aname;
-            itype = atype;
-            weight = aweight;
-            unit = aunit;
-            description = adescription;
-            price = aprice;
-            qty = aqty;
+            this.Name = name;
+            this.Type = type;
+            this.Weight = weight;
+            this.Unit = unit;
+            this.Description = description;
+            this.Price = price;
+            this.Qty = qty;
         }
- 
     }
 }

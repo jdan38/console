@@ -135,7 +135,6 @@
             billingALabel.Size = new System.Drawing.Size(78, 13);
             billingALabel.TabIndex = 9;
             billingALabel.Text = "Billing Address:";
-            billingALabel.Click += new System.EventHandler(this.billingALabel_Click);
             // 
             // emailLabel
             // 

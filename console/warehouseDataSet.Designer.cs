@@ -514,13 +514,14 @@ namespace console {
                 base.Columns.Add(this.columnPhone);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.columnId.AutoIncrementSeed = 1;
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
                 this.columnFirstName.MaxLength = 50;
                 this.columnLastName.MaxLength = 50;
                 this.columnShippingA.MaxLength = 150;
                 this.columnBillingA.MaxLength = 500;
-                this.columnEmail.MaxLength = 10;
+                this.columnEmail.MaxLength = 100;
                 this.columnPhone.MaxLength = 50;
             }
             
@@ -1210,8 +1211,13 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_FirstName, string Original_LastName, string Original_ShippingA, string Original_BillingA, string Original_Email, global::System.Nullable<decimal> Original_Balance, global::System.Nullable<decimal> Original_Credits, string Original_Phone) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+        public virtual int Delete(global::System.Nullable<int> Original_Id, string Original_FirstName, string Original_LastName, string Original_ShippingA, string Original_BillingA, string Original_Email, global::System.Nullable<decimal> Original_Balance, global::System.Nullable<decimal> Original_Credits, string Original_Phone) {
+            if ((Original_Id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Original_FirstName == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -1296,8 +1302,13 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string FirstName, string LastName, string ShippingA, string BillingA, string Email, global::System.Nullable<decimal> Balance, global::System.Nullable<decimal> Credits, string Phone) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(global::System.Nullable<int> Id, string FirstName, string LastName, string ShippingA, string BillingA, string Email, global::System.Nullable<decimal> Balance, global::System.Nullable<decimal> Credits, string Phone) {
+            if ((Id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((FirstName == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -1367,7 +1378,7 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int Id, 
+                    global::System.Nullable<int> Id, 
                     string FirstName, 
                     string LastName, 
                     string ShippingA, 
@@ -1376,7 +1387,7 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
                     global::System.Nullable<decimal> Balance, 
                     global::System.Nullable<decimal> Credits, 
                     string Phone, 
-                    int Original_Id, 
+                    global::System.Nullable<int> Original_Id, 
                     string Original_FirstName, 
                     string Original_LastName, 
                     string Original_ShippingA, 
@@ -1385,7 +1396,12 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
                     global::System.Nullable<decimal> Original_Balance, 
                     global::System.Nullable<decimal> Original_Credits, 
                     string Original_Phone) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+            if ((Id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((FirstName == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -1434,7 +1450,12 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Phone));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
+            if ((Original_Id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
             if ((Original_FirstName == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
@@ -1528,7 +1549,7 @@ SELECT Id, FirstName, LastName, ShippingA, BillingA, Email, Balance, Credits, Ph
                     global::System.Nullable<decimal> Balance, 
                     global::System.Nullable<decimal> Credits, 
                     string Phone, 
-                    int Original_Id, 
+                    global::System.Nullable<int> Original_Id, 
                     string Original_FirstName, 
                     string Original_LastName, 
                     string Original_ShippingA, 
