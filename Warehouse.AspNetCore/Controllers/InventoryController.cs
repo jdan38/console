@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,11 +11,11 @@ using Warehouse.AspNetCore.Models;
 
 namespace Warehouse.AspNetCore.Controllers
 {
-    public class CustomersController : Controller
+    public class InventoryController : Controller
     {
         private readonly WarehouseDbContext _context;
 
-        public CustomersController(WarehouseDbContext context)
+        public InventoryController(WarehouseDbContext context)
         {
             _context = context;
         }
@@ -26,59 +27,59 @@ namespace Warehouse.AspNetCore.Controllers
         }
 
         // GET: Customers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> IDetails(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerNumber == id);
-            if (customer == null)
+            var inventory = await _context.Inventories
+                .FirstOrDefaultAsync(m => m.ItemId == id);
+            if (inventory == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(inventory);
         }
 
         // GET: Customers/Create
-        public IActionResult Create()
+        public IActionResult InCreate()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Inventory/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FName,LName,CustomerNumber,Phone,BAddress,SAddress,Email,Balance")] Customer customer)
+        public async Task<IActionResult> InCreate([Bind("FName,LName,CustomerNumber,Phone,BAddress,SAddress,Email,Balance")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Add(inventory);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IList));
             }
-            return View(customer);
+            return View(inventory);
         }
 
         // GET: Customers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> IEdit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var inventory = await _context.Inventories.FindAsync(id);
+            if (inventory == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            return View(inventory);
         }
 
         // POST: Customers/Edit/5
@@ -86,9 +87,9 @@ namespace Warehouse.AspNetCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FName,LName,CustomerNumber,Phone,BAddress,SAddress,Email,Balance")] Customer customer)
+        public async Task<IActionResult> IEdit(int id, [Bind("FName,LName,CustomerNumber,Phone,BAddress,SAddress,Email,Balance")] Inventory inventory)
         {
-            if (id != customer.CustomerNumber)
+            if (id != inventory.ItemId)
             {
                 return NotFound();
             }
@@ -97,14 +98,14 @@ namespace Warehouse.AspNetCore.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    _context.Update(inventory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.CustomerNumber))
+                    if (!InventoryExists(inventory.ItemId))
                     {
-                        return NotFound(); //base;
+                        return NotFound();
                     }
                     else
                     {
@@ -113,7 +114,7 @@ namespace Warehouse.AspNetCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(inventory);
         }
 
         // GET: Customers/Delete/5
@@ -124,14 +125,14 @@ namespace Warehouse.AspNetCore.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerNumber == id);
-            if (customer == null)
+            var inventory = await _context.Inventories
+                .FirstOrDefaultAsync(m => m.ItemId == id);
+            if (inventory == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(inventory);
         }
 
         // POST: Customers/Delete/5
@@ -139,15 +140,15 @@ namespace Warehouse.AspNetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
-            _context.Customers.Remove(customer);
+            var inventory = await _context.Inventories.FindAsync(id);
+            _context.Inventories.Remove(inventory);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IList));
         }
 
-        private bool CustomerExists(int id)
+        private bool InventoryExists(int id)
         {
-            return _context.Customers.Any(e => e.CustomerNumber == id);
+            return _context.Inventories.Any(e => e.ItemId == id);
         }
     }
 }

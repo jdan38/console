@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Warehouse.AspNetCore.Data;
+using Warehouse.AspNetCore.Models;
 
 namespace Warehouse.AspNetCore
 {
@@ -26,6 +27,8 @@ namespace Warehouse.AspNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICategoryRepo, CategoryRepo>();
+            services.AddScoped<IInventory, InventoryItemRepo>();
             services.AddControllersWithViews();
             services.AddDbContext<WarehouseDbContext>(optionsBuilder => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Warehouse;Integrated Security=True"));
         }

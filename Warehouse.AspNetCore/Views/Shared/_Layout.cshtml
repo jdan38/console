@@ -28,7 +28,7 @@ body {
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 15px;
   color: #818181;
   display: block;
 }
@@ -56,6 +56,9 @@ body {
                 font-size: 18px;
             }
     }
+#log {
+    padding-top: 50em;
+}
 </style>
 <body>
         <header>
@@ -69,27 +72,35 @@ body {
 
                             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                                 <div class="sidenav">
-                             
+
                                     @*<ul class="navbar-nav flex-grow-1">*@
 
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="Privacy">Add Customer</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-area="" asp-controller="Build" asp-action="Privacy">Build Order</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-area="" asp-controller="Invoice" asp-action="Privacy">Print Invoice</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-area="" asp-controller="DelCustomer" asp-action="Privacy">Delete Customer</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-area="" asp-controller="Inventory" asp-action="Privacy">Add Inventory</a>
-                                        </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Customers" asp-action="Create">Add Customer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Customers" asp-action="Index">Customer List</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Customers" asp-action="Build">Build Order</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Customers" asp-action="Print">Print Invoice</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Inventory" asp-action="InCreate">Add Inventory</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Inventory" asp-action="IList">List Inventory</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div id="log">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="login">Log Out</a>
+                                        </div>
+                                    </li>
                                     @*</ul>*@
                                 </div>
                             </div>

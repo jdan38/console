@@ -16,6 +16,11 @@ namespace Warehouse.AspNetCore.Data
 
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Inventory> Inventories { get; set; }
+
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\warehouse.mdf;Integrated Security=True");
 
     }

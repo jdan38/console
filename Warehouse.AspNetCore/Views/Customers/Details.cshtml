@@ -1,4 +1,4 @@
-﻿@model Warehouse.AspNetCore.Models.Customer
+﻿@model Warehouse.AspNetCore.Models.Inventory
 
 @{
     ViewData["Title"] = "Details";
@@ -7,54 +7,43 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Customer</h4>
+    <h4>Customer #@Model.ItemId</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FName)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FName)
+            @Html.DisplayFor(model => model.ShortDescription)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LName)
+            @Html.DisplayNameFor(model => model.LongDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LName)
+            @Html.DisplayFor(model => model.Price)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.ImageUrl)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.ImageThumbnailUrl)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BAddress)
+            @Html.DisplayNameFor(model => model.FeaturedItem)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BAddress)
+            @Html.DisplayFor(model => model.InStock)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SAddress)
-        </dt>
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>*@
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SAddress)
+            @Html.DisplayFor(model => model.Category)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Balance)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Balance)
-        </dd>
+       
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CustomerNumber">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ItemId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
