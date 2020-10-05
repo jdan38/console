@@ -29,6 +29,9 @@ namespace Warehouse.AspNetCore
         {
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddScoped<IInventory, InventoryItemRepo>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession() ;
             services.AddControllersWithViews();
             services.AddDbContext<WarehouseDbContext>(optionsBuilder => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Warehouse;Integrated Security=True"));
         }
@@ -51,9 +54,9 @@ namespace Warehouse.AspNetCore
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession(); 
 
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

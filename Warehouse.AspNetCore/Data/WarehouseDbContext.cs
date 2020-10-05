@@ -20,6 +20,8 @@ namespace Warehouse.AspNetCore.Data
 
         public DbSet<Inventory> Inventories { get; set; }
 
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\warehouse.mdf;Integrated Security=True");
 

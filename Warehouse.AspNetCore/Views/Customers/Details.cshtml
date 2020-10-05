@@ -10,40 +10,33 @@
     <h4>Customer #@Model.ItemId</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShortDescription)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItemId)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LongDescription)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShortDescription)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LongDescription)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageThumbnailUrl)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FeaturedItem)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InStock)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InStock)
-        </dd>
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>*@
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Category)
         </dd>
-       
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ItemId">Edit</a> |
+    <a asp-action="IEdit" asp-route-id="@Model.ItemId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

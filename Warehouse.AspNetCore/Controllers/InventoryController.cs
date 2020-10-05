@@ -23,7 +23,7 @@ namespace Warehouse.AspNetCore.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customers.ToListAsync());
+            return View(await _context.Inventories.ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -55,13 +55,13 @@ namespace Warehouse.AspNetCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> InCreate([Bind("FName,LName,CustomerNumber,Phone,BAddress,SAddress,Email,Balance")] Inventory inventory)
+        public async Task<IActionResult> InCreate([Bind("ItemId,Name,ShortDescription,LongDescription,Price,ImageUrl,ImageThumbnailUrl,FeaturedItem,Amount,InStock,Category")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(inventory);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(IList));
+                return RedirectToAction(nameof(Index));
             }
             return View(inventory);
         }
@@ -87,7 +87,7 @@ namespace Warehouse.AspNetCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> IEdit(int id, [Bind("FName,LName,CustomerNumber,Phone,BAddress,SAddress,Email,Balance")] Inventory inventory)
+        public async Task<IActionResult> IEdit(int id, [Bind("ItemId,Name,ShortDescription,LongDescription,Price,ImageUrl,ImageThumbnailUrl,FeaturedItem,Amount,InStock,Category")] Inventory inventory)
         {
             if (id != inventory.ItemId)
             {
@@ -118,7 +118,7 @@ namespace Warehouse.AspNetCore.Controllers
         }
 
         // GET: Customers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> IDelete(int? id)
         {
             if (id == null)
             {
@@ -135,15 +135,15 @@ namespace Warehouse.AspNetCore.Controllers
             return View(inventory);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Customers/Delete/
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int Itemid)
         {
-            var inventory = await _context.Inventories.FindAsync(id);
+            var inventory = await _context.Inventories.FindAsync(Itemid);
             _context.Inventories.Remove(inventory);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(IList));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool InventoryExists(int id)
