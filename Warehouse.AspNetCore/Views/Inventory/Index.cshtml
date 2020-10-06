@@ -43,9 +43,16 @@
 
 @foreach (var item in Model)
         {
-        <tr>
+        <tr>    
+            <td>     
+                <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pieId="@item.ItemId">Add to cart</a>
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <a asp-controller="Inventory"
+                   asp-action="IDetails"
+                   asp-route-id="@item.ItemId">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ItemId)

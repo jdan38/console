@@ -29,6 +29,7 @@ namespace Warehouse.AspNetCore
         {
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddScoped<IInventory, InventoryItemRepo>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
             services.AddHttpContextAccessor();
             services.AddSession() ;
