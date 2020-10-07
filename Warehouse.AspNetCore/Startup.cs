@@ -1,4 +1,4 @@
-using System;
+  using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@ namespace Warehouse.AspNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<WarehouseDbContext>();
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddScoped<IInventory, InventoryItemRepo>();
             services.AddScoped<IOrderRepo, OrderRepo>();
@@ -35,6 +37,7 @@ namespace Warehouse.AspNetCore
             services.AddSession() ;
             services.AddControllersWithViews();
             services.AddDbContext<WarehouseDbContext>(optionsBuilder => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Warehouse;Integrated Security=True"));
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,12 +62,14 @@ namespace Warehouse.AspNetCore
 
             app.UseRouting();
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
