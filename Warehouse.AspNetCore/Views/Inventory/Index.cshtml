@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.ItemName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ItemId)
@@ -51,7 +51,7 @@
                 <a asp-controller="Inventory"
                    asp-action="IDetails"
                    asp-route-id="@item.ItemId">
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.ItemName)
                 </a>
             </td>
             <td>

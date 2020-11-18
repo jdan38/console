@@ -62,7 +62,7 @@ namespace Warehouse.AspNetCore.Models
 
         [BindNever]
         [ScaffoldColumn(false)]
-        public decimal OrderTotal { get; set; }
+        public int OrderTotal { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]

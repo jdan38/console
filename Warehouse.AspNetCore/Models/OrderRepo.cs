@@ -24,7 +24,7 @@ namespace Warehouse.AspNetCore.Models
             order.OrderPlaced = DateTime.Now;
 
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
-            order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
+            order.OrderTotal = (int)_shoppingCart.GetShoppingCartTotal();
 
             order.OrderDetails = new List<OrderDetail>();
             //adding the order with its details

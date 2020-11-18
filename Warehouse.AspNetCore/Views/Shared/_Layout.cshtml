@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Warehouse.AspNetCore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/regist.css" />
 </head>
 <style>
 
@@ -15,7 +16,7 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 160px;
+  width: 180px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -38,7 +39,8 @@ body {
 }
 
 .container{
-    padding-left: 15em;
+    
+    padding-left: 8em;
 }
 
 .main {
@@ -57,7 +59,7 @@ body {
             }
     }
 #log {
-    padding-top: 45em;
+    padding-top: 40em;
 }
 </style>
 <body>
@@ -72,8 +74,6 @@ body {
 
                             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                                 <div class="sidenav">
-
-                                    @*<ul class="navbar-nav flex-grow-1">*@
 
                                     <li class="nav-item">
                                         <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
@@ -95,11 +95,10 @@ body {
                                     </li>
                                     <li class="nav-item">
                                         <div id="log">
-                                            <partial name="_LoginPartial" />
-                                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="login">Log Out</a>
+                                            <partial name="_LoginPartial" /> 
                                         </div>
                                     </li>
-                                    @*</ul>*@
+                                  
                                 </div>
                             </div>
                         </div>
